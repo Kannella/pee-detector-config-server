@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: sound-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+sound-service:
+  play-sound: true
+  sound-file: /sounds/alerta.mp3
+  volume: 80

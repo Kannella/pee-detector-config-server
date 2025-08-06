@@ -1,0 +1,45 @@
+server:
+  port: 8765
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: event-service
+          uri: lb://event-service
+          predicates:
+            - Path=/event-service/**
+        - id: sound-service
+          uri: lb://sound-service
+          predicates:
+            - Path=/sound-service/**
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/notification-service/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+# Expondo a documentação do Swagger para o API Gateway
+springdoc:
+  swagger-ui:
+    urls:
+      - name: event-service
+        url: /event-service/v3/api-docs
+      - name: sound-service
+        url: /sound-service/v3/api-docs
+      - name: notification-service
+        url: /notification-service/v3/api-docs

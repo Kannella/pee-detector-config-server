@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: notification-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+notification-service:
+  send-push: true
+  provider: aws-sns
+  topic-arn: arn:aws:sns:us-east-1:123456789012:dog-detector

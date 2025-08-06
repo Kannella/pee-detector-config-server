@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: event-service
+
+event-service:
+  save-events: true
+  persist-database: postgresql
+  db-schema: public
+  locale: pt-BR
+  detection-message: "Cachorro fazendo xixi detectado!"
